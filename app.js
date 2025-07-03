@@ -8,23 +8,14 @@ function getRepositoriesUrl(value){
     return `https://api.github.com/search/repositories?q=${value}`;
 }
 
-function requestToServer(method, url, fn){
-    const xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.responseType = 'json';
-    xhr.onload = () => {
-        if(xhr.status === 403){
-            alert('Привышен лимит запроса к GitHub')
-            return
-        }
-
-        if(xhr.status === 200){
-            let repositories = xhr.response.items;
-            fn(repositories)
-            
-        }
-    }
-    xhr.send()
+function requestToServer(url, fn){
+    fetch(url).then(response => {
+        return response.json()
+    }).then(item => {
+        fn(item.items)
+    }).catch(error => {
+        alert(`Произошла ошибка: ${error}`)
+    })
 }
 
 function debounce(fn, time){
@@ -49,7 +40,7 @@ function searchRepo(e) {
 
     let arr = [];
 
-    requestToServer('GET', getRepositoriesUrl(userInput), (repositories) => {
+    requestToServer(getRepositoriesUrl(userInput), (repositories) => {
 
         arr = repositories.filter((item) => {
             return item.name.toLowerCase().startsWith(userInput.toLowerCase()); 
