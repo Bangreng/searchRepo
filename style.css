@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: auto;
+}
+
+body{
+    background: rgb(201, 194, 185);
+
+    display: flex;
+    justify-content: center;
+    
+    padding-top: 40px;
+    
+}
+
+
+#app{
+
+    width: 661px;
+    min-height: 763px;
+    background: antiquewhite;
+    margin: 0 auto;
+
+    border: 3px solid rgb(255, 212, 156);
+    padding: 20px;
+}
+
+.search-input{
+    margin-top: 62px;
+    position: relative;
+}
+
+.search-input.active .auto-complete{
+    opacity: 1;
+}
+
+input{
+    display: block;
+    width: 500px;
+    height: 61px;
+    margin: 0 auto;
+    padding-left: 10px;
+    color:rgb(134, 113, 84);
+    border-radius: 12px;
+}
+
+.auto-complete {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.auto-complete li{
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    height: 44px;
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    display: none;
+
+    color:rgb(134, 113, 84);
+    
+}
+
+.search-input.active .auto-complete li{
+    display: block;
+}
+
+.auto-complete li:hover{
+    background: rgb(235, 234, 234);
+}
+input::placeholder, input, .auto-complete li{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.repositories-list{
+    margin-top: 265px;
+}
+
+.card{
+    width: 503px;
+    height: 101px;
+    background: rgb(201, 194, 185);
+    margin: auto;
+    font-size: 24px;
+    border: 2px solid rgb(143, 140, 140);
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+.card__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card__btn-close{
+    font-size: 70px;
+    border: none;
+    background-color: transparent;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    line-height: 1; 
+    color: rgb(212, 109, 109)
+}
